@@ -21,9 +21,6 @@ def generate_url(keyword):
 
 
 async def get_response(keyword, url):
-    # with urllib.request.urlopen(url) as res:
-    #     json_res = await json.loads(res.read().decode("utf-8"))
-    #     return json_res
     response = await aiohttp.get(url)
     data = await response.text()
     json_data = json.loads(data)
@@ -49,11 +46,7 @@ def main(argv):
     for keyword in argv:
         url = generate_url(keyword)
         urls.append({'url': url, 'keyword': keyword})
-        # print(url)
-        # res = asyncio.ensure_future(get_response(url))
-        # ans = {"name":keyword, "count":int(res["response"]["result"]["numFound"])}
-        # ans_lst.append(ans)
-    # print(ans_lst)
+
     futures = [get_response(url['keyword'], url['url']) for url in urls]
     loop = asyncio.get_event_loop()
     tasks = loop.run_until_complete(asyncio.wait(futures))[0]
