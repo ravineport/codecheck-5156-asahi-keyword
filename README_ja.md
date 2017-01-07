@@ -20,11 +20,12 @@
 CLIの実装方法については[指定言語].mdを参照ください。
 使用可能な言語は
 
-- nodejs
-- ruby
-- java
-- go
-- python
+- NodeJS
+- Ruby
+- Java
+- Go
+- Python2
+- Python3
 
 のいずれかです。
 
