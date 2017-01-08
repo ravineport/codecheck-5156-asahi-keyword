@@ -54,13 +54,12 @@ def print_for_test(ans):
 
 
 def main(argv):
-    urls = []
+    futures = []
 
     for keyword in argv:
         url = generate_url(keyword)
-        urls.append({'url': url, 'keyword': keyword})
+        futures.append(get_response(keyword, url))
 
-    futures = [get_response(url['keyword'], url['url']) for url in urls]
     loop = asyncio.get_event_loop()
     tasks = loop.run_until_complete(asyncio.wait(futures))[0]
     print_for_test(calc_max_numFound(tasks))
