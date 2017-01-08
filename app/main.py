@@ -8,18 +8,17 @@ import aiohttp
 
 end_point = "http://54.92.123.84/search?"
 api_key = "869388c0968ae503614699f99e09d960f9ad3e12"
-params = {
-    "q": "",
-    "wt": "json",
-    "ackey": api_key
-}
 
 
 def generate_url(keyword):
     '''
     keywordを含む記事を検索するAPIを生成
     '''
-    params["q"] = "Body:" + str(keyword)
+    params = {
+        'q': 'Body:' + str(keyword),
+        'wt': 'json',
+        'ackey': api_key
+    }
     return end_point + urllib.parse.urlencode(params)
 
 
