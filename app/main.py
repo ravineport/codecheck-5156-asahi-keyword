@@ -6,8 +6,8 @@ import asyncio
 import aiohttp
 
 
-end_point = "http://54.92.123.84/search?"
-api_key = "869388c0968ae503614699f99e09d960f9ad3e12"
+end_point = 'http://54.92.123.84/search?'
+api_key = '869388c0968ae503614699f99e09d960f9ad3e12'
 
 
 def generate_url(keyword):
@@ -36,7 +36,7 @@ def responce2simple_json(keyword, res):
     '''
     返ってきたJSONから必要な部分だけを抽出
     '''
-    return {"name": keyword, "count": int(res["response"]["result"]["numFound"])}
+    return {'name': keyword, 'count': int(res['response']['result']['numFound'])}
 
 
 def calc_max_numFound(tasks):
@@ -50,7 +50,7 @@ def print_for_test(ans):
     '''
     ans(Dict型)をテストで求められる形式に変換
     '''
-    print("{\"name\":\"" + ans["name"] + "\",\"count\":" + str(ans["count"]) + "}")
+    print("{\"name\":\"" + ans['name'] + "\",\"count\":" + str(ans['count']) + "}")
 
 
 def main(argv):
