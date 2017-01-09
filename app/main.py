@@ -4,7 +4,10 @@ import urllib.request, urllib.parse
 import json
 import asyncio
 import aiohttp
+import sys
+import codecs
 
+sys.stdin = codecs.getreader("utf-8")(sys.stdin)
 
 end_point = 'http://54.92.123.84/search?'
 api_key = '869388c0968ae503614699f99e09d960f9ad3e12'
@@ -15,7 +18,7 @@ def generate_url(keyword):
     keywordを含む記事を検索するAPIを生成
     '''
     params = {
-        'q': 'Body:' + str(keyword),
+        'q': 'Body:' + keyword,
         'wt': 'json',
         'ackey': api_key
     }
@@ -57,7 +60,7 @@ def main(argv):
     futures = []
 
     for keyword in argv:
-        url = generate_url(keyword)
+        url = generate_url(keyword.encode('utf-8', 'surrogateescape').decode('utf-8'))
         futures.append(get_response(keyword, url))
 
     loop = asyncio.get_event_loop()
