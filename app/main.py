@@ -4,10 +4,7 @@ import urllib.request, urllib.parse
 import json
 import asyncio
 import aiohttp
-import sys
-import codecs
 
-sys.stdin = codecs.getreader("utf-8")(sys.stdin)
 
 end_point = 'http://54.92.123.84/search?'
 api_key = '869388c0968ae503614699f99e09d960f9ad3e12'
